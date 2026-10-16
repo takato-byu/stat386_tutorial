@@ -200,7 +200,7 @@ Why?
 
 For example, if BMI and blood pressure are correlated, they may contain overlapping information. LASSO may retain one predictor while setting the coefficient of the other to zero.
 
-Which predictor is selected can depend on the dataset, the scaling of the predictors, and the value of \(\alpha\).
+Which predictor is selected can depend on the dataset, the scaling of the predictors, and the value of $\alpha$.
 
 In other words, **a zero coefficient means that the predictor is not directly used in that fitted model's prediction equation. It does not mean the predictor is unrelated to the outcome in the real world**.
 
