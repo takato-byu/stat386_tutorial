@@ -208,7 +208,7 @@ Additionally, LASSO coefficients describe predictive associations and should not
 
 In this example, we trained the models using the entire dataset to observe how the coefficients change. Therefore, we have not evaluated their predictive performance on unseen data.
 
-In a real prediction task, we should select \(\alpha\) using cross-validation within the training data and evaluate predictive performance on a separate test dataset.
+In a real prediction task, we should select $\alpha$ using cross-validation within the training data and evaluate predictive performance on a separate test dataset.
 
 `scikit-learn` provides [`LassoCV`](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoCV.html) for selecting \(\alpha\) through cross-validation.
 
