@@ -2,7 +2,14 @@
 layout: default
 title: What Does It Mean When a LASSO Coefficient Becomes Zero?
 ---
-
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true
+  }
+};
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" defer></script>
 
 # What Does It Mean When a LASSO Coefficient Becomes Zero?
