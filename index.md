@@ -140,7 +140,7 @@ Finally, at $\alpha=10.0$, all ten coefficients are zero. The model then predict
 
 ### Visualizing Coefficient Changes
 
-Instead of using only four values of \(\alpha\), we can examine a wider range to visualize how the coefficients change.
+Instead of using only four values of $\alpha$, we can examine a wider range to visualize how the coefficients change.
 
 ```python
 import numpy as np
