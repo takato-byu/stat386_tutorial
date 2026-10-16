@@ -21,7 +21,7 @@ $$
 \hat{y}_i = \beta_0 + \beta_1 x_{i1} + \cdots + \beta_p x_{ip}
 $$
 
-Here, \(\hat{y}_i\) is the predicted value for observation \(i\), \(\beta_0\) is the intercept, and \(\beta_j\) is the coefficient for predictor \(j\).
+Here, $\hat{y}_i$ is the predicted value for observation $i$, $\beta_0$ is the intercept, and $\beta_j$ is the coefficient for predictor $j$.
 
 Ordinary Least Squares (OLS) minimizes the **Residual Sum of Squares (RSS)**, which is the sum of the squared differences between observed and predicted values.
 
@@ -29,11 +29,11 @@ LASSO adds a penalty based on the magnitudes of the coefficients. In `scikit-lea
 
 $$
 \min_{\beta_0,\ldots,\beta_p}
-\left\{
+\left(
 \frac{1}{2n}\sum_{i=1}^{n}(y_i-\hat{y}_i)^2
 +
 \alpha\sum_{j=1}^{p}|\beta_j|
-\right\}
+\right)
 $$
 
 This equation means that **LASSO finds regression coefficients that balance minimizing prediction error and keeping coefficients small**.
@@ -46,17 +46,17 @@ $$
 \frac{1}{2n}\sum_{i=1}^{n}(y_i-\hat{y}_i)^2
 $$
 
-- \(n\): The number of observations (442 patients in our dataset).
-- \(y_i\): The actual target value for patient \(i\).
-- \(\hat{y}_i\): The predicted value for the same patient.
-- \((y_i-\hat{y}_i)^2\): The squared prediction error.
-- \(\sum_{i=1}^{n}\): The sum of squared errors across all observations.
+- $n$: The number of observations (442 patients in our dataset).
+- $y_i$: The actual target value for patient $i$.
+- $\hat{y}_i$: The predicted value for the same patient.
+- $(y_i-\hat{y}_i)^2$: The squared prediction error.
+- $\sum_{i=1}^{n}$: The sum of squared errors across all observations.
 
-**Why do we use \(1/(2n)\)?**
+**Why do we use $1/(2n)$?**
 
-The factor \(1/n\) averages the squared errors across observations. The factor \(1/2\) simplifies differentiation by canceling the factor of 2 that appears when differentiating a squared term.
+The factor $1/n$ averages the squared errors across observations. The factor $1/2$ simplifies differentiation by canceling the factor of 2 that appears when differentiating a squared term.
 
-In OLS, multiplying the RSS by a positive constant does not change the optimal coefficients. However, in LASSO, **changing only the scaling of the prediction-error term without adjusting \(\alpha\) changes the relative importance of the penalty**.
+In OLS, multiplying the RSS by a positive constant does not change the optimal coefficients. However, in LASSO, **changing only the scaling of the prediction-error term without adjusting $\alpha$ changes the relative importance of the penalty**.
 
 ### Second Term: L1 Penalty
 
@@ -64,22 +64,15 @@ $$
 \alpha\sum_{j=1}^{p}|\beta_j|
 $$
 
-- \(p\): The number of predictors (10 in our dataset).
-- \(\beta_j\): The coefficient of predictor \(j\).
-- \(|\beta_j|\): The absolute value of the coefficient.
-- \(\alpha \geq 0\): A parameter that controls the strength of the penalty.
+- $p$: The number of predictors (10 in our dataset).
+- $\beta_j$: The coefficient of predictor $j$.
+- $|\beta_j|$: The absolute value of the coefficient.
+- $\alpha \geq 0$: A parameter that controls the strength of the penalty.
 
-For example, suppose three predictors have coefficients of \(3\), \(-2\), and \(1\). The sum of their absolute values is:
 
-$$
-|3|+|-2|+|1|=6
-$$
+When $\alpha=0$, the penalty disappears, and the objective function becomes equivalent to OLS. As $\alpha$ increases, LASSO places more emphasis on keeping coefficients small, even if this increases the training error.
 
-If \(\alpha=2\), the penalty becomes \(2\times6=12\).
-
-When \(\alpha=0\), the penalty disappears, and the objective function becomes equivalent to OLS. As \(\alpha\) increases, LASSO places more emphasis on keeping coefficients small, even if this increases the training error.
-
-The intercept \(\beta_0\) is not penalized in this formulation.
+The intercept $\beta_0$ is not penalized in this formulation.
 
 The absolute-value penalty used by LASSO is called the **L1 penalty**. Because the absolute-value function has a sharp corner at zero, optimization can produce coefficients that are exactly zero. This is how LASSO performs feature selection.
 
@@ -130,7 +123,7 @@ print(results.round(2).to_markdown(index=False))
 
 ### Results
 
-The following table shows the results of fitting LASSO with four different values of \(\alpha\).
+The following table shows the results of fitting LASSO with four different values of $\alpha$.
 
 | Alpha | BMI Coefficient | BP Coefficient | Zero Coefficients |
 |---:|---:|---:|---:|
@@ -139,9 +132,9 @@ The following table shows the results of fitting LASSO with four different value
 | 1.0 | 367.70 | 6.30 | 7 |
 | 10.0 | 0.00 | 0.00 | 10 |
 
-At \(\alpha=0.01\), all ten predictors have nonzero coefficients. When \(\alpha=0.1\), three coefficients become zero. At \(\alpha=1.0\), seven predictors have zero coefficients, and the blood pressure coefficient is close to zero.
+At $\alpha=0.01$, all ten predictors have nonzero coefficients. When $\alpha=0.1$, three coefficients become zero. At $\alpha=1.0$, seven predictors have zero coefficients, and the blood pressure coefficient is close to zero.
 
-Finally, at \(\alpha=10.0\), all ten coefficients are zero. The model then predicts using only its intercept.
+Finally, at $\alpha=10.0$, all ten coefficients are zero. The model then predicts using only its intercept.
 
 **These results demonstrate how stronger regularization can produce a simpler model.**
 
@@ -187,7 +180,7 @@ plt.show()
 
 *Figure 1. LASSO coefficient paths for the diabetes dataset. The horizontal axis shows the regularization strength on a logarithmic scale, and the vertical axis shows the estimated coefficients.*
 
-As \(\alpha\) increases, more coefficients reach zero. When a coefficient is zero, its predictor no longer contributes directly to predictions made by the model fitted at that value of \(\alpha\).
+As $\alpha$ increases, more coefficients reach zero. When a coefficient is zero, its predictor no longer contributes directly to predictions made by the model fitted at that value of $\alpha$.
 
 However, when predictors are correlated, individual coefficients do not necessarily decrease monotonically toward zero.
 
@@ -196,7 +189,7 @@ However, when predictors are correlated, individual coefficients do not necessar
 Consider the following simplified regression model:
 
 $$
-\hat{y}_i = 150 + 500x_{i,\mathrm{BMI}} + 0x_{i,\mathrm{BP}}
+\hat{y}_i = 150 + 500x_{BMI} + 0x_{BP}
 $$
 
 In this model, changing blood pressure while holding BMI constant **does not change the predicted value**, because the coefficient for blood pressure is zero.
@@ -223,7 +216,7 @@ In a real prediction task, we should select \(\alpha\) using cross-validation wi
 
 LASSO is a regression method that balances minimizing prediction error with an L1 penalty on coefficient magnitudes.
 
-As \(\alpha\) increases, LASSO encourages coefficients to shrink, and some coefficients may become exactly zero, allowing the model to perform feature selection.
+As $\alpha$ increases, LASSO encourages coefficients to shrink, and some coefficients may become exactly zero, allowing the model to perform feature selection.
 
 However, **a coefficient becoming zero does not prove that the predictor is unrelated to the outcome in the real world or that no causal relationship exists**.
 
@@ -231,6 +224,6 @@ To explore this further, try the following three exercises:
 
 1. Add `alpha=0.001` and `alpha=2` to the comparison and observe how the number of zero coefficients changes.
 2. Examine the coefficient-path plot and identify which predictors remain nonzero even under stronger regularization.
-3. Use `LassoCV` to select \(\alpha\) through cross-validation and compare which predictors remain in the model.
+3. Use `LassoCV` to select $\alpha$ through cross-validation and compare which predictors remain in the model.
 
 By completing these exercises, you will gain a deeper understanding of how LASSO shrinks coefficients and performs feature selection.
