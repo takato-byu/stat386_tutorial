@@ -210,7 +210,7 @@ In this example, we trained the models using the entire dataset to observe how t
 
 In a real prediction task, we should select $\alpha$ using cross-validation within the training data and evaluate predictive performance on a separate test dataset.
 
-`scikit-learn` provides [`LassoCV`](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoCV.html) for selecting \(\alpha\) through cross-validation.
+`scikit-learn` provides [`LassoCV`](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoCV.html) for selecting $\alpha$ through cross-validation.
 
 ## 5. Conclusion and Next Steps
 
