@@ -21,7 +21,7 @@ $$
 \hat{y}_i = \beta_0 + \beta_1 x_{i1} + \cdots + \beta_p x_{ip}
 $$
 
-Here, $\hat{y}_i$ is the predicted value for observation $i$, $\beta_0$ is the intercept, and $\beta_p$ is the coefficient for predictor $p$.
+Here, $$\hat{y}_i$$ is the predicted value for observation $$i$$, $$\beta_0$$ is the intercept, and $$\beta_p$$ is the coefficient for predictor $$p$$.
 
 Ordinary Least Squares (OLS) minimizes the **Residual Sum of Squares (RSS)**, which is the sum of the squared differences between observed and predicted values.
 
